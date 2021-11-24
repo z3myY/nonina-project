@@ -1,0 +1,47 @@
+<div class="container border-top pt-5">
+	<h2>Comentarios</h2>
+	{% for comentario in comentarios %}
+		<div class="media shadow p-3 mt-3 mb-3 rounded">
+			<div class="media-body col-8">
+				<h5 class="mt-0">{{comentario.usuario.nombre| raw }}:</h5>
+				<p>{{comentario.texto| raw }}</p>
+				<p>{{comentario.fecha|date('d-m-Y')}}</p>
+				<i class="bi bi-heart-fill"></i>
+				<p id="nlikes{{comentario.id}}" style="display: inline; margin-left: 1rem"></p>
+			</div>
+			<div
+				class="media-body col-4">
+
+				{# Si hay se está logeado y además ese usuario es el que puso ese comentario, o es admin, 
+																								aparecerán los botones de editar y borrar del comentario #}
+				{% if is_granted('ROLE_ADMIN') or (is_granted('ROLE_USER') and (app.user.id == comentario.usuario.id)) %}
+					<div class="text-right">
+						<a href="{{ path('editar_comentario', {'id': comentario.id}) }}" class="btn btn-warning">
+							<i class="bi bi-pencil-square"></i>
+						</a>
+
+						{{ include('comentario/_delete_form.html.twig') }}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
+
+		<script>
+			var like = '{{ comentario.id }}';
+contarLikes(like)
+		</script>
+
+		{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+			<button id="like" onclick="darLike({{comentario.id}},{{noticia.id}},{{app.user.id}})" class="btn btn-success">Dar Like</button>
+		{% endif %}
+
+	{% else %}
+		<div class="container text-center p-5">
+			<h4>No hay comentarios</h4>
+		</div>
+	{% endfor %}
+</div>
+{% if is_granted('ROLE_USER') %}
+	{% include "comentario/_form.html.twig" %}
+{% endif %}

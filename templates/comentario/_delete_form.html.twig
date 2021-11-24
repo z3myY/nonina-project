@@ -1,0 +1,8 @@
+<div id="" class="text-right">
+	<form method="post" action="{{ path('borrar_comentario', {'id': comentario.id}) }}" onsubmit="return confirm('¿Estás seguro de que quieres borrar el comentario?');">
+		<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comentario.id) }}">
+		<button class="btn btn-danger mt-3">
+			<i class="bi bi-trash"></i>
+		</button>
+	</form>
+</div>

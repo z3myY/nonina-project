@@ -1,19 +1,151 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block titulo %}
+				NONINÁ TEAM
+			{% endblock %}
+		</title>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+		{# Bloque para estilos#}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+			<link rel="stylesheet" href="{{asset('css/style.css')}}">
+			<link rel="stylesheet" href="{{asset('css/all.css')}}">
+		{% endblock %}
+
+	</head>
+	<body>
+		{# Bloque para la barra de navegación para toda la página web#}
+		{% block navbar %}
+			<header>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+
+					<div class="col-12 col-sm-2 text-center">
+						<a href="{{ path('index') }}">
+							<h1>
+								<img src="{{asset('images/logo_navbar.png')}}" alt="logo_navbar" class="header__logo-img" style="max-height: 70px; max-width: 70px;">
+							</h1>
+						</a>
+					</div>
+
+					<a class="navbar-brand border-right pr-5" href="{{ path('index') }}">NONINÁ TEAM</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+
+					<!-- Barra de navegación principal -->
+					<div class="collapse navbar-collapse navbar navbar-expand-xl" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item {% if app.request.get('_route') == 'index' %} active {% endif %}">
+								<a class="nav-link" href="{{ path('index') }}">INICIO</a>
+							</li>
+							<li class="nav-item {% if app.request.get('_route') == 'noticias' %} active {% endif %}">
+								<a class="nav-link" href="{{ path('noticias') }}">NOTICIAS
+								</a>
+							</li>
+							<li class="nav-item {% if app.request.get('_route') == 'conocenos' %} active {% endif %}">
+								<a class="nav-link" href="{{ path('conocenos') }}">¿QUIENES SOMOS?
+								</a>
+							</li>
+							<li class="nav-item {% if app.request.get('_route') == 'tienda' %} active {% endif %}">
+								<a class="nav-link" href="{{ path('tienda') }}">TIENDA
+								</a>
+							</li>
+							{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+								<li class="nav-item {% if app.request.get('_route') == 'foro' %} active {% endif %}">
+									<a class="nav-link" href="{{ path('foro') }}">FORO
+									</a>
+								</li>
+							{% endif %}
+							<li class="nav-item {% if app.request.get('_route') == 'perfil' %} active {% endif %}">
+								<a class="nav-link" {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %} href="{{ path('perfil', {'id': app.user.id}) }}" {% else %} href="{{ path('web_login') }}" {% endif %}>PERFIL
+								</a>
+							</li>
+						</ul>
+
+						<!-- Login -->
+						<div class="fixed- top col-12 col-sm-auto text-right">
+							{% if is_granted('ROLE_USER') %}
+								<div>
+									<i class="bi bi-person-circle pr-2"></i>
+									<a href="{{ path("perfil", {'id': app.user.id}) }}" class="font-weight-bold">
+										{{ app.user.nick }}</a>
+
+								</div>
+								<div>
+									{# <a href="{{ path("app_logout") }}" class="cerrar-sesion">
+																																																																																																																																																																											Cerrar sesión</a> #}
+									<button onclick="cerrarSesion()" class="btn btn-link cerrar-sesion">Cerrar sesión</button>
+								</div>
+							{% else %}
+								<a href="{{ path("web_login") }}" class="btn">
+									<i class="bi bi-person-circle pr-3"></i>Iniciar sesión</a>
+								|<a href="{{ path("registro") }}" class="btn">Regístrate</a>
+							{% endif %}
+
+						</div>
+
+					</div>
+				</nav>
+			</body>
+		</body>
+	</html>
+</header>{% endblock %}{# Bloque del contenido, será diferente para cada partes de la página#}<main>
+{% block contenido %}{% endblock %}</main>{# Foter para todo el sitio web #}{% block footer %}
+<footer class="bg-light border-top">
+
+	<div class="collapse bg-dark" id="navbarHeader">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-md-7 py-4">
+					<h4 class="text-white">Información</h4>
+					<p class="text-muted">Sitio web creado por mí, José Miguel González Lozada, con motivo del proyecto final del ciclo formativo de Diseño de Aplicaciones Web (DAW), grado superior, realizado en el I.E.S. Luis Vélez de Guevara. En el cual presento un sitio web dedicado a mi equipo de ciclismo, NONINÁ TEAM, y que comparto con otros amigos apasionados del ciclismo.
+					</p>
+				</div>
+				<div class="col-sm-4 offset-md-1 py-4">
+					<h4 class="text-white">Contacto</h4>
+					<ul class="list-unstyled">
+						<li>
+							<p class="text-white">Síguenos en</p>
+						</li>
+						<li>
+							<i class="bi bi-instagram text-white "></i>
+							<a href="https://www.instagram.com/nonina_team" target="_blank" class="text-white col-3 padding-right-logos text-center">Instagram
+							</a>
+						</li>
+						<li>
+							<i class="bi bi-twitter text-white "></i>
+							<a href="https://twitter.com/nonina_team" target="_blank" class="text-white col-3 padding-right-logos text-center">Twitter
+							</a>
+						</li>
+						<li>
+							{# Quizás poner para mandar correo a una dirección, por ahora se quedará que mande arriba de la página #}
+							<i class="bi bi-envelope text-white "></i>
+							<a href="#" class="text-white col-3 padding-right-logos text-center">Enviar correo</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="navbar navbar-dark bg-dark shadow-sm">
+		<div
+			class="container">
+			{# Enlace que irá a la página de politica de privacidad #}
+			<a href="#" class="navbar-brand d-flex ">
+				<span class="padding-right-logos text-center" style="font-size: small">© NONINÁ TEAM 2021</span>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</div>
+</footer>{% endblock %}{# Bloque para donde incluiremos todos los js para el sitio web #}{% block javascripts %}
+<script src="{{ asset('js/jquery-3.5.1.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/myScript.js') }}"></script>{% endblock %}</body></html>

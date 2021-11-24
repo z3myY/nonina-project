@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+<div id="" class="container text-center mt-3  input-login">
+
+	{{ form_start(form) }}
+	{{ form_widget(form.titular, { 'attr': {'class': 'form-control text-center mt-3', 'placeholder': 'Titular'} }) }}
+	{{ form_widget(form.entradilla, { 'attr': {'class': 'form-control text-center mt-3', 'placeholder': 'Entradilla'} }) }}
+	{{ form_widget(form.cuerpo, { 'attr': {'class': 'form-control text-center mt-3', 'placeholder': 'Cuerpo'} }) }}
+	{{ form_widget(form.categoria, { 'attr': {'class': 'form-control mt-3'} }) }}
+	{{ form_widget(form.imagen, { 'attr': {'class': 'text-center mt-3', 'placeholder': 'Imagen'} }) }}
+	{{ form_end(form) }}
+	<button class="btn btn-primary boton_registro m-3 text-center">{{ button_label|default('Publicar Noticia') }}</button>
+
+</div>
+{{ form_end(form) }}

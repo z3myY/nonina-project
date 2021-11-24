@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}Editar tema
+{% endblock %}
+
+{% block contenido %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center p-5 bg-titulo-foro rounded m-3">
+				<h1>FORO NONINÁ TEAM</h1>
+			</div>
+
+			<div class="col-12 text-center mt-5">
+				<h2>Editar tema</h2>
+			</div>
+
+			{{ include('foro/_form.html.twig', {'button_label': 'Editar tema'}) }}
+
+			<a href="{{ path('tema', {'id': tema.id} )}}">
+				<i class="bi bi-arrow-left-circle mr-2"></i>Volver al tema</a>
+		</div>
+	</div>
+{% endblock %}

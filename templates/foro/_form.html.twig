@@ -1,0 +1,13 @@
+<div class="container text-center">
+	<div class="media shadow p-3 m-5 rounded text-center">
+		{{ form_start(form, {'attr': {'class': 'col-12'}}
+		) }}
+		{{ form_widget(form.titulo, { 'attr': {'class': 'form-control text-center mt-3', 'placeholder': 'Titulo del tema'} }) }}
+		{{ form_widget(form.descripcion, { 'attr': {'class': 'form-control text-center mt-3', 'placeholder': 'Breve descripcion'} }) }}
+		{{ form_widget(form.texto, { 'attr': {'class': 'form-control text-center mt-3', 'placeholder': 'Escribe el primer post'} }) }}
+		{{ form_widget(form.categoria, { 'attr': {'class': 'form-control mt-3'} }) }}
+		<button class="btn btn-primary boton_registro m-3 text-center">{{ button_label|default('Actualizar tema') }}</button>
+
+		{{ form_end(form) }}
+	</div>
+</div>

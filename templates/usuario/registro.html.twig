@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+	Registro -
+	{{ parent() }}
+{% endblock %}
+
+
+{% block contenido %}
+	<div class="center">
+		<div class="card shadow p-3 mt-3 mb-3 rounded">
+			<div class="card-body">
+				<h1 class="h3 mb-5 font-weight-normal text-center">¡Regístrate!</h1>
+
+				{% include "usuario/_form.html.twig" %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

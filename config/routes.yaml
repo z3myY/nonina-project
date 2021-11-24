@@ -1,3 +1,34 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+index:
+    path: /
+    controller: App\Controller\WebController::index
+
+web_login:
+    path: /login
+    controller: App\Controller\AutenticacionController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\AutenticacionController::logout
+
+web_registro:
+    path: /registro
+    controller: App\Controller\UsuarioController::registro
+
+# Paras el CRUD de noticias utilizaremos las anotaciones @Route del NoticiaController, así que aparecerán aquí
+
+
+foro:
+    path: /foro
+    controller: App\Controller\ForoController::foro
+
+conocenos:
+    path: /conocenos
+    controller: App\Controller\WebController::conocenos
+
+tienda:
+    path: /tienda
+    controller: App\Controller\WebController::tienda

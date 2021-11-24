@@ -1,0 +1,57 @@
+{# templates/security/login.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block titulo %}Login -
+	{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+	{{parent()}}
+	<div class="container text-center mt-3  input-login p-4">
+		<form method="post">
+
+			<h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
+
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			{% if app.user %}
+				<div class="mb-3">
+					<p>¡Estás logeado
+						{{ app.user.nick }}!</p>
+					<a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
+				</div>
+
+			{% else %}
+				<div class="row m-3">
+					<div class="col">
+						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+					</div>
+				</div>
+
+				<div class="row m-3">
+					<div class="col">
+						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+					</div>
+				</div>
+				<div class="row m-3">
+					<div class="col ">
+						<input type="checkbox" onclick="mostrarPassword()">
+						Mostrar contraseña
+					</div>
+				</div>
+
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+				<button id="boton_login" class="btn btn-lg btn-primary m-3" type="submit">
+					Entrar
+				</button>
+			{% endif %}
+
+
+		</form>
+	</div>
+{% endblock %}

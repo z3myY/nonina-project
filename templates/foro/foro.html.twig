@@ -1,0 +1,67 @@
+{# templates/foro/index.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block titulo %}
+	FORO NONINÁ TEAM
+{% endblock %}
+{% block contenido %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center p-5 bg-titulo-foro rounded m-3">
+				<h1>FORO NONINÁ TEAM</h1>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-12 m-3 media shadow rounded text-center bg-cabecera-foro">
+				<div class="media-body">
+					<ul class="list-group list-group-horizontal">
+						<li class="list-group-item col-md-6 text-left list-group bg-cabecera-foro">TEMAS</li>
+						<li class="list-group-item col-md-2 bg-cabecera-foro">CATEGORÍA</li>
+						<li class="list-group-item col-md-1 bg-cabecera-foro">POSTS</li>
+						<li class="list-group-item col-md-3 bg-cabecera-foro">LAST POST</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		{% for tema in temas %}
+
+			<div class="row">
+				<div class="col-12 m-3 media shadow rounded text-center bg-tema-foro">
+					<div class="media-body">
+						<ul class="list-group list-group-horizontal">
+							<li class="list-group-item col-md-6 bg-tema-foro">
+								<ul class="list-group">
+									<li class="list-group-item col-md-12 text-left list-group titulo-tema">
+										<a href="{{ path('tema', {'id': tema.id}) }}" style="color: rgb(104, 104, 104)">{{tema.titulo}}
+										</a>
+									</li>
+									<li class="list-group-item col-md-12 text-left list-group descripcion-tema">{{tema.descripcion}}</li>
+
+								</ul>
+							</li>
+
+							<li class="list-group-item col-md-2 bg-tema-foro letra-bolder" style="padding-top: 3rem">{{tema.categoria.nombre}}</li>
+							<li class="list-group-item col-md-1 bg-tema-foro letra-bolder" style="padding-top: 3rem">2</li>
+							<li class="list-group-item col-md-3 bg-tema-foro letra-bolder">
+								{{tema.usuario.nombre}}
+								{# {% if tema.post == null %}
+																																																																Sin posts
+																																																																{% else %}
+																																																																{{post.usuario.nombre}}
+																																																																{% endif %} #}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
+		<p class="text-right mt-5">
+			<a href="{{ path("nuevo_tema") }}" class="btn btn-secondary">Nuevo tema</a>
+		</p>
+
+	</div>
+{% endblock %}

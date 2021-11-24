@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar comentario -
+	{{ parent() }}
+{% endblock %}
+
+{% block contenido %}
+	<h1 class="text-center -p-3">Editar comentario</h1>
+
+	{{ include('comentario/_form.html.twig', {'button_label': 'Actualizar comentario'}) }}
+
+	<a href="{{ path('noticia', {'id': comentario.noticia.id}) }}" class="text-center">Volver a la noticia</a>
+
+{% endblock %}

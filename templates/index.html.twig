@@ -1,0 +1,48 @@
+{# templates/index.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{# El index, el inicio del sitio web, será simplente un plantilla que muestre un carrusel de fotos del equipo #}
+{% block contenido %}
+
+	{# Carrusel que mostrará las imágenes de las 3 útlimas noticias del equipo #}
+	<div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+
+			{% for noticia in noticias %}
+				<div {% if loop.index0 == 0 %} class="carousel-item active" {% else %} class="carousel-item" {% endif %}>
+					<img src=" {{asset('images/'~ noticia.imagen)}} " class="img-fluid " alt="..."/>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	{# Además aparecerán apareceran la entradillas y titular de la noticia #}
+
+	{% for noticia in noticias %}
+		<hr class="featurette-divider">
+
+		<div class="row featurette ">
+			<div {% if (loop.index0 + 2) % 2 == 0 %} class="col-md-7" {% else %} class="col-md-7 order-md-2" {% endif %}>
+				<a href="{{ path('noticia', {'id': noticia.id}) }}">
+					<h2 class="featurette-heading">{{noticia.titular}}
+					</h2>
+				</a>
+
+				<p class="lead">{{ noticia.entradilla }}</p>
+			</div>
+			<div class="col-md-5">
+				<img src=" {{asset('images/'~ noticia.imagen)}} " class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" style="width: 500px, height: 500px" alt="..."/>
+
+			</div>
+		</div>
+	{% endfor %}
+
+
+	<hr class="featurette-divider">
+{% endblock %}

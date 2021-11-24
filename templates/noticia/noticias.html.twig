@@ -1,0 +1,43 @@
+{# templates/noticia/noticias.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block contenido %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center p-5 bg-dark rounded m-3">
+				<h3 class="">ÚLTIMAS NOTICIAS</h3>
+			</div>
+
+		</div>
+
+		{# Capa donde se presentarán todas las noticias, si no hay noticias se dirá que no hay noticias #}
+		<div class="row p-3">
+			{% for noticia in noticias %}
+
+				<div class="col-12 col-md-4 mt-3 mt-md-0 img-contenedor">
+					<h5>
+						<a href="{{path('noticia', {'id': noticia.id})}}">{{noticia.titular}}</a>
+					</h5>
+
+					<a href="{{path('noticia', {'id': noticia.id})}}"><img src="{{asset('images/'~ noticia.imagen)}}" class="img-fluid float-right d-none d-md-block p-2 m-3 rounded"></a>
+
+					<p>{{noticia.entradilla}}</p>
+
+				</div>
+			{% else %}
+				<div class="container text-center p-5">
+					<h4>No hay noticias</h4>
+				</div>
+			{% endfor %}
+
+		</div>
+		{% if is_granted('ROLE_ADMIN') %}
+			<p class="text-right">
+				<a href="{{ path("nuevaNoticia") }}" class="btn btn-secondary">Nueva noticia</a>
+			</p>
+		{% endif %}
+		<div></div>
+	</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{{ form_start(form) }}
+<div id="" class="container text-center  input-registro">
+	<div class="row">
+		<div class="col-lg-3">
+			<h6 class="mb-0">Nombre completo</h6>
+		</div>
+		<div class="col-lg-9 text-secondary">
+			{{ form_widget(form.nombre, { 'attr': {'class': 'form-control text-center', 'placeholder': 'Nombre'} }) }}
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-lg-3">
+			<h6 class="mb-0">Nick</h6>
+		</div>
+		<div class="col-lg-9 text-secondary">
+			{{ form_widget(form.nick, { 'attr': {'class': 'form-control text-center', 'placeholder': '@nick'} }) }}
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-lg-3">
+			<h6 class="mb-0">Email</h6>
+		</div>
+		<div class="col-lg-9 text-secondary">
+			{{ form_widget(form.email, { 'attr': {'class': 'form-control text-center', 'placeholder': 'ejemplo@mail.es'} }) }}
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-lg-3">
+			<h6 class="mb-0">Contraseña</h6>
+		</div>
+		<div class="col-lg-9 text-secondary">
+			{{ form_row(form.password.first, { 'attr': {'class': 'form-control text-center', 'placeholder': 'ejemplo@mail.es'} }) }}
+			{{ form_row(form.password.second, { 'attr': {'class': 'form-control text-center', 'placeholder': 'ejemplo@mail.es'} }) }}
+		</div>
+	</div>
+	<div class="row m-3">
+		<div class="col text-right">
+			<input type="checkbox" onclick="mostrarPasswordEditarUsuario()">
+			Mostrar contraseña
+		</div>
+	</div>
+	<hr>
+	{{ form_widget(form.save, { 'attr': {'class': 'btn btn-primary boton_registro m-3'} }) }}
+
+</div>
+{{ form_end(form) }}

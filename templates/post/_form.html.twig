@@ -1,0 +1,10 @@
+<div class="container text-center">
+	<div class="media shadow p-3 m-5 rounded text-center">
+		{{ form_start(form, {'attr': {'class': 'col-12'}}) }}
+		{{ form_widget(form.texto, { 'attr': {'class': 'form-control text-center mt-3', 'placeholder': 'Escribe lo que quieras postear'} }) }}
+
+		<button class="btn btn-primary boton_registro m-3 text-center">{{ button_label|default('Postear') }}</button>
+
+		{{ form_end(form) }}
+	</div>
+</div>

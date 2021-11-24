@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TemaForo
+{% endblock %}
+
+{% block contenido %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center p-5 bg-titulo-foro rounded m-3">
+				<h1>FORO NONINÁ TEAM</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 m-3 media shadow rounded text-center bg-cabecera-foro">
+				<div class="media-body">
+					<ul class="list-group list-group-horizontal">
+						<li class="list-group-item col-md-12 text-center list-group bg-cabecera-foro p-3">
+							<h4>{{ tema.titulo }}</h4>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="media shadow p-3 mt-3 mb-3 ml-3 rounded">
+			<div class="media-body col-12">
+				<h5 class="mt-0">{{tema.usuario.nombre| raw }}:</h5>
+				<p>{{tema.texto| raw }}</p>
+
+			</div>
+			<div
+				class="media-body col-4">
+				{# Si hay se está logeado y además ese usuario es el que puso ese post, o es admin, 
+																																																																																																																																												aparecerán los botones de editar y borrar del post #}
+				<div class="text-right">
+					<p class="text-right">{{tema.fecha|date('d-m-Y')}}</p>
+				</div>
+			</div>
+		</div>
+
+		{# Cargamos todos los post del tema #}
+		{% for post in posts %}
+			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots-vertical ml-5" viewbox="0 0 16 16">
+				<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+			</svg>
+			<div class="media shadow p-3 mt-3 mb-3 ml-3 rounded">
+				<div class="media-body col-12">
+					<h5 class="mt-0">{{post.usuario.nombre| raw }}:</h5>
+					<p>{{post.texto| raw }}</p>
+
+				</div>
+				<div
+					class="media-body col-4 text-right">
+
+					{# Si hay se está logeado y además ese usuario es el que puso ese post, o es admin, 
+																																																																																																																																																																															aparecerán los botones de editar y borrar del post #}
+
+					<div class="col-12">
+						<p class="text-right">{{post.fecha|date('d-m-Y H:i')}}</p>
+					</div>
+
+
+					<div class="d-flex flex-row-reverse">
+						{% if is_granted('ROLE_ADMIN') or (is_granted('ROLE_USER') and (app.user.id == post.usuario.id)) %}
+
+
+							{{ include('post/_delete_form.html.twig') }}
+
+							<a href="{{ path('editar_post', {'id': post.id}) }}" class="btn btn-warning mr-3 mt-3">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<div class="container text-center p-5">
+				<h4>No hay posts</h4>
+			</div>
+		{% endfor %}
+
+	</div>
+
+	{% include "post/_form.html.twig" %}
+
+	<a href="{{ path('foro') }}" class="letra-pequeña">
+		<i class="bi bi-arrow-left-circle mr-2"></i>Volver al index del foro</a>
+
+	{% if is_granted('ROLE_ADMIN') or (is_granted('ROLE_USER') and (app.user.id == tema.usuario.id)) %}
+		<div class="d-flex flex-row-reverse">
+
+			{{ include('foro/_delete_form.html.twig') }}
+			<a href="{{ path('editar_tema', {'id': tema.id}) }}" class="btn btn-warning mr-3">
+				Editar tema
+			</a>
+		</div>
+	{% endif %}
+{% endblock %}

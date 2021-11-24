@@ -1,0 +1,41 @@
+{# templates/noticia/noticia.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block titulo %}
+	Noticia -
+	{{parent()}}
+{% endblock %}
+{% block contenido %}
+	{{parent()}}
+
+	<div class="container text-center mb-5">
+		<h1 class="p-3 m-2">{{noticia.titular| raw }}</h1>
+		<img src="{{asset('images/'~ noticia.imagen )}}" class="shadow rounded foto-noticia">
+		<div class="row">
+			<div class="col">
+				<figcaption class="figure-caption">
+					<strong>Autor:
+					</strong>
+					{{noticia.usuario.nombre| raw}}
+					<strong>Fecha:</strong>
+					{{noticia.fecha|date("d/m/Y H:i")}}</figcaption>
+
+			</div>
+		</div>
+	</div>
+	<div class="container text-justify pb-5">
+		<p class="text-justify">{{noticia.cuerpo| raw }}</p>
+	</div>
+
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="container text-right">
+			<a href="{{ path('noticias') }}" class="letra-pequeña">
+				<i class="bi bi-arrow-left-circle mr-2"></i>Volver a las noticias</a>
+			<a href="{{ path('editarNoticia', {'id': noticia.id}) }}" class="btn btn-secondary m-3 text-right">Editar Noticia</a>
+		</div>
+	{% endif %}
+
+
+	{% include "comentario/mostrar_comentarios.html.twig" %}
+
+{% endblock %}

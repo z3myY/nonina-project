@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TemaForo
+{% endblock %}
+
+{% block contenido %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center p-5 bg-titulo-foro rounded m-3">
+				<h1>FORO NONINÁ TEAM</h1>
+			</div>
+
+			<div class="col-12 text-center  mt-5">
+				<h2>Publicar nuevo tema en el foro</h2>
+			</div>
+
+			{{ include('foro/_form.html.twig', {'button_label': "Publicar tema"}) }}
+
+			<a href="{{ path('foro') }}">Volver al foro</a>
+		</div>
+	</div>
+
+{% endblock %}

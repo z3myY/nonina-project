@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('borrar_tema', {'id': tema.id}) }}" onsubmit="return confirm('¿Estás seguro que quiere eliminar el tema?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tema.id) }}">
+	<button class="btn btn-danger">Borrar tema
+	</button>
+</form>

@@ -1,0 +1,13 @@
+{# templates/error.html.twig #}
+
+{# Plantilla que se cargará cuando haya algún tipo de error #}
+
+{% extends "base.html.twig" %}
+
+	{% block contenido %}
+
+		<div class="container text-center p-3"> <img src="{{asset('images/error.jpg')}}" alt="error" class="error_img rounded img-fluid">
+		<h1 class="text-center p-2">Ha ocurrido un error</h1>
+		<h4 style="color: red">{{ error.getMessage() }}</h4>
+	</div>
+{% endblock %}

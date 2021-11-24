@@ -1,0 +1,6 @@
+<div id="" class="container text-center input-login">
+	<form method="post" action="{{ path('eliminarNoticia', {'id': noticia.id}) }}" onsubmit="return confirm('¿Estás seguro de que quieres eliminar la noticia?');">
+		<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ noticia.id) }}">
+		<button class="btn btn-danger boton_eliminar m-3 text-center">Eliminar</button>
+	</form>
+</div>
