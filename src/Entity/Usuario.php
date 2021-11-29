@@ -91,11 +91,6 @@ class Usuario implements UserInterface
     private $likesComentario;
 
     /**
-     * @ORM\OneToOne(targetEntity=LikesNoticia::class, mappedBy="usuario", cascade={"persist", "remove"})
-     */
-    private $likesNoticia;
-
-    /**
      * @ORM\OneToMany(targetEntity=TemaForo::class, mappedBy="usuario")
      */
     private $temaForos;
@@ -242,23 +237,6 @@ class Usuario implements UserInterface
         }
 
         $this->likesComentario = $likesComentario;
-
-        return $this;
-    }
-
-    public function getLikesNoticia(): ?LikesNoticia
-    {
-        return $this->likesNoticia;
-    }
-
-    public function setLikesNoticia(LikesNoticia $likesNoticia): self
-    {
-        // set the owning side of the relation if necessary
-        if ($likesNoticia->getUsuario() !== $this) {
-            $likesNoticia->setUsuario($this);
-        }
-
-        $this->likesNoticia = $likesNoticia;
 
         return $this;
     }
