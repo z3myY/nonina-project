@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Noticia;
 use App\Entity\Usuario;
 use App\Entity\Comentario;
 use App\Entity\LikesComentario;
-use App\Entity\LikesNoticia;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
