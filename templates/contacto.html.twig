@@ -15,7 +15,11 @@
 			<a class="nav-link" id="contact-tab" data-toggle="tab" href="#formulario" role="tab" aria-controls="formulario" aria-selected="false">Contáctanos</a>
 		</li>
 	</ul>
-	<div class="tab-content" id="myTabContent">
+	<div
+		class="tab-content" id="myTabContent">
+
+		{# Apartado estático de información sobre nosotros y publicaciones de instagram #}
+
 		<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 			<div class="container text-center">
 				<h2 class="p-3 m-2">NONINÁ TEAM</h2>
@@ -25,17 +29,17 @@
 				<div id="descripcion" class="text-justify">
 
 					<h5 class="p-3 m-2">Simplemente eramos un grupo de amigos al que les gustaba la bicicleta, pero todo
-												esto empezó de la siguiente manera, quedaros a leer esta pequeña historia sobre el origen del
-												Noniná Team:
+																																																																																																																																																																		esto empezó de la siguiente manera, quedaros a leer esta pequeña historia sobre el origen del
+																																																																																																																																																																		Noniná Team:
 					</h5>
 
 					<p>Todo comenzó en un pequeño pueblo de la campiña sevillana, en la mesa de una terraza de un pub. Fue fácil
-												y simple. Solo hicieron falta unos refrescos (porque somos sanos🙄) y la tan mala suerte de
-												tener alguna tarjeta de crédito a mano...</p>
+																																																																																																																																																																		y simple. Solo hicieron falta unos refrescos (porque somos sanos🙄) y la tan mala suerte de
+																																																																																																																																																																		tener alguna tarjeta de crédito a mano...</p>
 
 					<p>
 						- ¿Ei nos apuntamos a un carrera de estas gordas por etapas? - Soltó uno como el que no
-												quiere la cosa y sin pensar lo que iba a pasar.
+																																																																																																																																																																		quiere la cosa y sin pensar lo que iba a pasar.
 
 					</p>
 					<p>
@@ -43,15 +47,15 @@
 					</p>
 					<p>
 						- Noniná - Soltó el tercero, que seguro que era el que menos pasta tenia, menos habia
-												entrenado y mas le habia afectado el azúcar de la Coca-Cola 😂. Pues si, esa ultima frase
-												fue la que decidió el antes y el después en un grupo de amigos. Meses más
-												tarde estábamos gozándolo en los montes de la sierra de la @lariojabikerace, carrera de 4 etapas
-												con muchos km y desnivel.
+																																																																																																																																																																		entrenado y mas le habia afectado el azúcar de la Coca-Cola 😂. Pues si, esa ultima frase
+																																																																																																																																																																		fue la que decidió el antes y el después en un grupo de amigos. Meses más
+																																																																																																																																																																		tarde estábamos gozándolo en los montes de la sierra de la @lariojabikerace, carrera de 4 etapas
+																																																																																																																																																																		con muchos km y desnivel.
 
 					</p>
 					<p>
 						Pues desde ese dia, hasta ahora, ha habido infinidad de quedadas, viajes, algunas carreras (cada vez más), vivencias y mucho
-												disfrute que iremos contando poco a poco. Sin más, un grupo de amigos sevillanos-cordobeses con el unico fin de pasárnoslo bien y disfrutar del deporte que más nos gusta, el ciclismo.
+																																																																																																																																																																		disfrute que iremos contando poco a poco. Sin más, un grupo de amigos sevillanos-cordobeses con el unico fin de pasárnoslo bien y disfrutar del deporte que más nos gusta, el ciclismo.
 					</p>
 					<p>
 						A contiación tienes algunas de nuestras aventuras que publicamos en nuestro
@@ -236,17 +240,20 @@
 
 		</div>
 
+		{# Apartado donde irá el formulario para mandar un correo de contacto #}
+
 		<div class="tab-pane fade" id="formulario" role="tabpanel" aria-labelledby="contact-tab">
-			<form class="align-items-center row" id="formulario_ingreso">
+			<div class="align-items-center row" id="formulario_ingreso">
 				<div class="form-group col-7 d-none d-lg-block" id="mapa_google">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6322.404256020898!2d-5.214332676043169!3d37.59740166983223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12c8b9fbdb6739%3A0xad174c092b5492a4!2s41439%20Ca%C3%B1ada%20Rosal%2C%20Sevilla!5e0!3m2!1ses!2ses!4v1637497044023!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 				</div>
-				<div class="form-group col-12 col-lg-5">
-					<div class="row p-3">
-						<div class="form-group col-12">
-							<label for="nombre">Nombre</label>
-							<input type="text" class="form-control" id="nombre">
-						</input>
+				{{form_start(form, { 'attr': {'class': 'form-group col-12 col-lg-5'}})}}
+				<div class="row p-3">
+					<div class="form-group col-12">
+						<label for="nombre">Nombre</label>
+						{{ form_widget(form.nombre, { 'attr': {'class': 'form-control', 'placeholder': 'Nombre'} }) }}
+
+						{# <input type="text" class="form-control" id="nombre"></input> #}
 						<div class="invalid-feedback">
 							El nombre es obligatorio.
 						</div>
@@ -256,31 +263,37 @@
 					</div>
 					<div class="form-group col-12">
 						<label for="email">Correo Electrónico</label>
-						<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-						<small id="emailHelp" class="form-text text-muted">No compartiremos tu email con
-																																																																																																																																					                                    nadie</small>
+						{{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'ejemplo@gmail.com'} }) }}
+
+						{# <input type="email" class="form-control" id="email" aria-describedby="emailHelp"> #}
+						<small id="emailHelp" class="form-text text-muted">No compartiremos tu email con nadie</small>
 						<div class="invalid-feedback">
 							El correo electrónico es obligatorio.
 						</div>
 					</div>
 					<div class="form-group col-12">
 						<label for="telefono">Teléfono</label>
-						<input type="tel" class="form-control" id="telefono">
+						{{ form_widget(form.telefono, { 'attr': {'class': 'form-control', 'placeholder': '666111444'} }) }}
+
+						{# <input type="tel" class="form-control" id="telefono"> #}
 						<div class="invalid-feedback">
 							El teléfono no es correcto.
 						</div>
 					</div>
-					<div class="form-group col-10">
+					<div class="form-group col-12">
 						<label for="mensaje">¡Cuéntanos!</label>
-						<textarea name="mensaje" id="mensaje" rows="5" class="form-control"></textarea>
+						{{ form_widget(form.texto, { 'attr': {'class': 'form-control', 'placeholder': 'Escribe lo que quieras preguntarnos', 'rows': "5"} }) }}
+
+						{# <textarea name="mensaje" id="mensaje" rows="5" class="form-control"></textarea> #}
 					</div>
 					<div class="form-group col-12">
-						<input id="enviar_formulario" type="submit" value="Enviar solicitud de ingreso" class="btn btn-primary">
+						{{ form_widget(form.save, { 'attr': {'class': 'btn btn-primary', 'placeholder': 'Escribe lo que quieras preguntarnos'} }) }}
+
+						{# <input id="enviar_formulario" type="submit" value="Enviar solicitud de ingreso" class="btn btn-primary"> #}
 					</div>
 				</div>
-
-
-			</form>
+				{{form_end(form)}}
+			</div>
 		</div>
 	</div>
 {% endblock %}

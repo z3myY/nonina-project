@@ -25,10 +25,11 @@ foro:
     path: /foro
     controller: App\Controller\ForoController::foro
 
-conocenos:
-    path: /conocenos
-    controller: App\Controller\WebController::conocenos
+contacto:
+    path: /contacto
+    controller: App\Controller\WebController::enviarEmailContacto
 
 tienda:
     path: /tienda
     controller: App\Controller\WebController::tienda
+

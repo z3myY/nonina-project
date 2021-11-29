@@ -98,7 +98,7 @@ class NoticiaController extends AbstractController
     /**
      * @Route("/noticia/{id}", name="noticia", methods={"GET", "POST"})
      * 
-     * Mostramos una noticia
+     * Mostramos una noticia, donde además se incluirá un apartado para que los usuarios registrados puedan publicar comentarios
      */
     public function noticia($id, Request $request)
     {

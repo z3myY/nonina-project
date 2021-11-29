@@ -47,8 +47,8 @@
 								<a class="nav-link" href="{{ path('noticias') }}">NOTICIAS
 								</a>
 							</li>
-							<li class="nav-item {% if app.request.get('_route') == 'conocenos' %} active {% endif %}">
-								<a class="nav-link" href="{{ path('conocenos') }}">¿QUIENES SOMOS?
+							<li class="nav-item {% if app.request.get('_route') == 'contacto' %} active {% endif %}">
+								<a class="nav-link" href="{{ path('contacto') }}">¿QUIENES SOMOS?
 								</a>
 							</li>
 							<li class="nav-item {% if app.request.get('_route') == 'tienda' %} active {% endif %}">
@@ -60,11 +60,12 @@
 									<a class="nav-link" href="{{ path('foro') }}">FORO
 									</a>
 								</li>
+
+								<li class="nav-item {% if app.request.get('_route') == 'perfil' %} active {% endif %}">
+									<a class="nav-link" {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %} href="{{ path('perfil', {'id': app.user.id}) }}" {% else %} href="{{ path('web_login') }}" {% endif %}>PERFIL
+									</a>
+								</li>
 							{% endif %}
-							<li class="nav-item {% if app.request.get('_route') == 'perfil' %} active {% endif %}">
-								<a class="nav-link" {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %} href="{{ path('perfil', {'id': app.user.id}) }}" {% else %} href="{{ path('web_login') }}" {% endif %}>PERFIL
-								</a>
-							</li>
 						</ul>
 
 						<!-- Login -->
@@ -78,7 +79,7 @@
 								</div>
 								<div>
 									{# <a href="{{ path("app_logout") }}" class="cerrar-sesion">
-																																																																																																																																																																											Cerrar sesión</a> #}
+																																																																																																																																																																																																																																	Cerrar sesión</a> #}
 									<button onclick="cerrarSesion()" class="btn btn-link cerrar-sesion">Cerrar sesión</button>
 								</div>
 							{% else %}
@@ -103,7 +104,9 @@
 			<div class="row">
 				<div class="col-sm-8 col-md-7 py-4">
 					<h4 class="text-white">Información</h4>
-					<p class="text-muted">Sitio web creado por mí, José Miguel González Lozada, con motivo del proyecto final del ciclo formativo de Diseño de Aplicaciones Web (DAW), grado superior, realizado en el I.E.S. Luis Vélez de Guevara. En el cual presento un sitio web dedicado a mi equipo de ciclismo, NONINÁ TEAM, y que comparto con otros amigos apasionados del ciclismo.
+					<p class="text-muted">Sitio web creado por mí, José Miguel González Lozada, con motivo del proyecto final del ciclo formativo 
+												de Diseño de Aplicaciones Web (DAW), grado superior, realizado en el I.E.S. Luis Vélez de Guevara. 
+												En el cual presento un sitio web dedicado a mi equipo de ciclismo, NONINÁ TEAM, el cual comparto con otros amigos apasionados del ciclismo.
 					</p>
 				</div>
 				<div class="col-sm-4 offset-md-1 py-4">
@@ -114,12 +117,14 @@
 						</li>
 						<li>
 							<i class="bi bi-instagram text-white "></i>
-							<a href="https://www.instagram.com/nonina_team" target="_blank" class="text-white col-3 padding-right-logos text-center">Instagram
+							<a href="https://www.instagram.com/nonina_team" target="_blank" class="text-white col-3 padding-right-logos text-center">
+								Instagram
 							</a>
 						</li>
 						<li>
 							<i class="bi bi-twitter text-white "></i>
-							<a href="https://twitter.com/nonina_team" target="_blank" class="text-white col-3 padding-right-logos text-center">Twitter
+							<a href="https://twitter.com/nonina_team" target="_blank" class="text-white col-3 padding-right-logos text-center">
+								Twitter
 							</a>
 						</li>
 						<li>

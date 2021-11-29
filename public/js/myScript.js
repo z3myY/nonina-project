@@ -47,4 +47,48 @@ function setPlaceholderPassword() {
     x.placeholder = "p4ssWord_";
     y.placeholder = "Repetir cotraseña";
 }
-window.onload = setPlaceholderPassword();
+
+
+// Likes
+
+function darLike(idUsuario, idComentario) {
+    fetch('https://127.0.0.1:8000/darLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
+        console.log('OK');
+    });
+    contarLikes(idComentario);
+}
+
+function quitarLike(idUsuario, idComentario) {
+    fetch('https://127.0.0.1:8000/quitarLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
+        console.log('OK');
+    });
+    contarLikes(idComentario);
+}
+
+
+
+function contarLikes(idComentario) {
+
+    fetch('https://127.0.0.1:8000/contarLikes/' + idComentario).then(respuesta => {
+        respuesta.text().then(contador => {
+            document.getElementById("nlikes" + idComentario).innerHTML = contador;
+        })
+    });
+}
+
+function pintarLikes() {
+    comentarios = $('.nlikes');
+
+    comentarios.each(function (posicion, comentario) {
+        idComentario = comentario.id.replace("nlikes", "");
+        contarLikes(idComentario);
+    })
+}
+
+// Funcion para llamar funciones al final
+function inicializar() {
+    pintarLikes();
+    setPlaceholderPassword();
+}
+
+window.onload = inicializar();

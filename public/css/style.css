@@ -371,3 +371,12 @@ a:link, a:visited, a:active {
   border-radius: .25rem;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
+
+
+/** 
+*   ESTILOS PARA PAGINA DE CONFIRMACIÓN DE ENVÍO DE CORREO 
+*/
+
+.correo-enviado {
+  min-height: 350px;
+}

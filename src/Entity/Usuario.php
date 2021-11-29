@@ -64,7 +64,8 @@ class Usuario implements UserInterface
      * @Assert\Regex(
      *     pattern="/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,20}$/",
      *     match=true,
-     *     message="Tu contraseña debe tener una letra minúscula y otra mayúscula, un número, un signo no alfanumérico y tener entre 8 y 20 caracteres."
+     *     message="Tu contraseña debe tener una letra minúscula y otra mayúscula, un número, 
+     *     un signo no alfanumérico y tener entre 8 y 20 caracteres."
      * )
      */
     private $password;
@@ -368,8 +369,6 @@ class Usuario implements UserInterface
      */
     public function eraseCredentials()
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
     /**
      * @see UserInterface

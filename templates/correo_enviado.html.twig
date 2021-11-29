@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block contenido %}
+
+	<div class="container text-center mt-5 correo-enviado">
+		<h1 style="color: green">¡El correo ha sido enviado correctamente
+			{{ nombre }}!</h1>
+		<h4>
+			<a href="{{ path('index') }}">Volver al inicio</a>
+		</h4>
+
+	</div>
+
+{% endblock %}

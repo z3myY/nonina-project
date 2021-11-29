@@ -12,27 +12,17 @@ class LikesComentario
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Usuario::class, inversedBy="likesComentario", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Usuario::class, inversedBy="likesComentario")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $usuario;
 
     /**
-     * @ORM\OneToOne(targetEntity=Comentario::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity=Comentario::class, inversedBy="likesComentario")
+     * @ORM\JoinColumn(name="comentario_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $comentario;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getUsuario(): ?Usuario
     {

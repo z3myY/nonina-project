@@ -34,6 +34,11 @@ class Categoria
      */
     private $noticias;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TemaForo::class, mappedBy="categoria")
+     */
+    private $temasForo;
+
     public function __construct()
     {
         $this->noticias = new ArrayCollection();
@@ -76,25 +81,11 @@ class Categoria
         return $this->noticias;
     }
 
-    public function addNoticia(Noticia $noticia): self
+    /**
+     * @return Collection|TemaForo[]
+     */
+    public function getTemasForo(): Collection
     {
-        if (!$this->noticias->contains($noticia)) {
-            $this->noticias[] = $noticia;
-            $noticia->setCategoria($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNoticia(Noticia $noticia): self
-    {
-        if ($this->noticias->removeElement($noticia)) {
-            // set the owning side to null (unless already changed)
-            if ($noticia->getCategoria() === $this) {
-                $noticia->setCategoria(null);
-            }
-        }
-
-        return $this;
+        return $this->temasForo;
     }
 }

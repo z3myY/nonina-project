@@ -6,14 +6,15 @@
 				<h5 class="mt-0">{{comentario.usuario.nombre| raw }}:</h5>
 				<p>{{comentario.texto| raw }}</p>
 				<p>{{comentario.fecha|date('d-m-Y')}}</p>
-				<i class="bi bi-heart-fill"></i>
-				<p id="nlikes{{comentario.id}}" style="display: inline; margin-left: 1rem"></p>
+				<i class="bi bi-heart-fill btn" style="cursor: pointer" {# onclick="darLike({{app.user.id}},{{comentario.id}})" #}></i>
+				<p id="nlikes{{comentario.id}}" class="nlikes" style="display: inline; margin-left: 1rem"></p>
 			</div>
+
 			<div
 				class="media-body col-4">
 
 				{# Si hay se está logeado y además ese usuario es el que puso ese comentario, o es admin, 
-																								aparecerán los botones de editar y borrar del comentario #}
+																																																																																																																												aparecerán los botones de editar y borrar del comentario #}
 				{% if is_granted('ROLE_ADMIN') or (is_granted('ROLE_USER') and (app.user.id == comentario.usuario.id)) %}
 					<div class="text-right">
 						<a href="{{ path('editar_comentario', {'id': comentario.id}) }}" class="btn btn-warning">
@@ -27,13 +28,9 @@
 		</div>
 
 
-		<script>
-			var like = '{{ comentario.id }}';
-contarLikes(like)
-		</script>
-
 		{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
-			<button id="like" onclick="darLike({{comentario.id}},{{noticia.id}},{{app.user.id}})" class="btn btn-success">Dar Like</button>
+			<button id="like" onclick="darLike({{app.user.id}},{{comentario.id}})" class="btn btn-success">Dar Like</button>
+			<button id="dislike" onclick="quitarLike({{app.user.id}},{{comentario.id}})" class="btn btn-danger">Quitar Like</button>
 		{% endif %}
 
 	{% else %}

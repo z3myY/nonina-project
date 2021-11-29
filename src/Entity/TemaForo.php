@@ -24,8 +24,8 @@ class TemaForo
     private $usuario;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categoria::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Categoria::class, inversedBy="temasForo")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $categoria;
 
