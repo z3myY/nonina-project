@@ -45,15 +45,15 @@ function cerrarSesion() {
 function darLike(idUsuario, idComentario) {
     fetch('/darLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
         console.log('Like done!');
+        contarLikes(idComentario);
     });
-    contarLikes(idComentario);
 }
 
 function quitarLike(idUsuario, idComentario) {
     fetch('/quitarLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
         console.log('Like removed!');
+        contarLikes(idComentario);
     });
-    contarLikes(idComentario);
 }
 
 
