@@ -50,12 +50,13 @@ class LikesController extends AbstractController
     /**
      * @Route("/quitarLike/{idUsuario}/{idComentario}", name="dislikeComentario", methods={"GET", "POST"})
      */
-    public function quitarLike($idUsuario, $idComentario)
+    public function quitarLike($idUsuario, $idComentario): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $likeComentario = $entityManager->getRepository(LikesComentario::class)->findOneBy(['usuario' => $idUsuario, 'comentario' => $idComentario]);
 
         $entityManager->remove($likeComentario);
         $entityManager->flush();
+        return new Response("OK");
     }
 }
