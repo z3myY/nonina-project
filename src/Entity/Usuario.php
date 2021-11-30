@@ -309,7 +309,7 @@ class Usuario implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return $this->getUserIdentifier();
     }
 
     /**
@@ -353,5 +353,6 @@ class Usuario implements UserInterface
      */
     public function getUserIdentifier()
     {
+        return (string) $this->email;
     }
 }

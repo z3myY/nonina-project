@@ -40,15 +40,6 @@ function cerrarSesion() {
     request.send();
 }
 
-function setPlaceholderPassword() {
-    var x = document.getElementById("form_password_first");
-    var y = document.getElementById("form_password_second");
-
-    x.placeholder = "p4ssWord_";
-    y.placeholder = "Repetir cotraseña";
-}
-
-
 // Likes
 
 function darLike(idUsuario, idComentario) {
@@ -88,7 +79,6 @@ function pintarLikes() {
 // Funcion para llamar funciones al final
 function inicializar() {
     pintarLikes();
-    setPlaceholderPassword();
 }
 
 window.onload = inicializar();
