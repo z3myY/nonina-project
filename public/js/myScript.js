@@ -43,15 +43,15 @@ function cerrarSesion() {
 // Likes
 
 function darLike(idUsuario, idComentario) {
-    fetch('https://127.0.0.1:8000/darLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
-        console.log('OK');
+    fetch('/darLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
+        console.log('Like done!');
     });
     contarLikes(idComentario);
 }
 
 function quitarLike(idUsuario, idComentario) {
-    fetch('https://127.0.0.1:8000/quitarLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
-        console.log('OK');
+    fetch('/quitarLike/' + idUsuario + '/' + idComentario).then((respuesta) => {
+        console.log('Like removed!');
     });
     contarLikes(idComentario);
 }
@@ -60,7 +60,7 @@ function quitarLike(idUsuario, idComentario) {
 
 function contarLikes(idComentario) {
 
-    fetch('https://127.0.0.1:8000/contarLikes/' + idComentario).then(respuesta => {
+    fetch('/contarLikes/' + idComentario).then(respuesta => {
         respuesta.text().then(contador => {
             document.getElementById("nlikes" + idComentario).innerHTML = contador;
         })
