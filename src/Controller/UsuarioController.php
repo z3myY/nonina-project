@@ -165,7 +165,12 @@ class UsuarioController extends AbstractController
             $entityManager->remove($usuario);
             $entityManager->flush();
         }
-
+       
+        //Invalida session antes de redirigir
+        $session = $this->get('session');
+        $session = new Session();
+        $session->invalidate();
+        
         return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);
     }
 }
