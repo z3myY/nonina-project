@@ -62,7 +62,7 @@ class Usuario implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string", length=255)
      * @Assert\Regex(
-     *     pattern="/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,20}$/",
+     *     pattern="/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])\S{8,20}$/",
      *     match=true,
      *     message="Tu contraseña debe tener una letra minúscula y otra mayúscula, un número, 
      *     un signo no alfanumérico y tener entre 8 y 20 caracteres."
