@@ -1,21 +1,48 @@
-INSERT INTO `categoria` (`id`, `nombre`, `descripcion`) VALUES
+-- phpMyAdmin SQL Dump
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-11-2021 a las 15:53:03
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 7.4.16
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: noninadb
+--
+
+--
+-- Volcado de datos para la tabla categoria
+--
+
+INSERT INTO categoria (id, nombre, descripcion) VALUES
 (1, 'Ruta', 'Ciclismo de carretera'),
 (2, 'MTB', 'Ciclismo de montaña, XC, XCO, XCM y DH'),
 (3, 'Ciclocross', NULL),
 (4, 'Team', 'Relacionado con todas las novedades y actividades del equipo NONINÁ TEAM');
 
 --
--- Volcado de datos para la tabla `doctrine_migration_versions`
+-- Volcado de datos para la tabla doctrine_migration_versions
 --
 
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
+INSERT INTO doctrine_migration_versions (version, executed_at, execution_time) VALUES
 ('DoctrineMigrations\\Version20211117223309', '2021-11-30 13:20:07', 1261);
 
 --
--- Volcado de datos para la tabla `noticia`
+-- Volcado de datos para la tabla noticia
 --
 
-INSERT INTO `noticia` (`id`, `usuario_id`, `categoria_id`, `titular`, `entradilla`, `cuerpo`, `imagen`, `fecha`) VALUES
+INSERT INTO noticia (id, usuario_id, categoria_id, titular, entradilla, cuerpo, imagen, fecha) VALUES
 (1, 2, 1, 'Un Giro de Italia como lo de siempre', 'Así será la \'Corsa Rosa\' de 2022: Mortirolo, Pordio y Marmolada serán los platos fuertes de una ronda que finalizará en Verona con crono individual.', '<p>La 105º edición del Giro de Italia terminó de dar a conocer su recorrido al desvelar que la última etapa será una contrarreloj individual de 17 km que tendrá la meta en el anfiteatro romano de Verona, con un trazado idéntico al de la edición de 2019 que ganó Richard Carapaz.</p><p>Este Giro 2022, que se ha ido desvelando por partes, tendrá seis etapas de montaña, cuatro de ellas con final en alto, seis de media montaña, siete propicias para los velocistas y dos cronos individuales.</p><p>La montaña será clave en la disputa por la maglia rosa. El Mortirolo, Blochkaus y las cimas del Passo Pordoi y Fedaia marcarán las diferencias en la general. En la cuarta jornada el pelotón deberá afrontar la llegada a la cima del Etna, en Sicilia, al final de una etapa de 166 km y 3.590 metros de desnivel.</p><p>Luego en la novena etapa volverá la lucha entre escaladores, ya que el Blockhaus decidirá entre los corredores tras haber cruzado Roccaraso y el Passo Lanciano. El tríptico de las etapas 15, 16 y 17 definirá la general con llegadas a Cogne, Aprica (tras el Mortirolo ) y Lavarone.</p><p>En la penúltima estación puede haber sorpresas con las subidas del Passo San Pellegrino, Passo Pordoi (2.239 metros sobre el nivel del mar, el punto más alto de esta edición) antes de llegar al Passo Fedaia. Todo debería decidirse en la montaña pero, si aún quedan dudas, la crono final de Verona encumbrará al nuevo ganador.</p><p>\'Será un Giro durísimo\', dice un Egan Bernal que, como confirmó a MARCA, no descarta presentearse en la Grande Partenza para intentar revalidar su reinado. López, Viviani, Nibali, Carapaz, Valter, Almeida, Ulissi y Colbrelli sí han confirmado su presencia. Será un Giro como los de siempre.</p>', 'noticia1.jpg', '2021-11-30 13:20:20'),
 (2, 2, 1, 'Chris Froome sufrió un brote de bilharzia en el pasado Tour de Francia', 'El ciclista argumentó sentirse muy cansado en plena ronda gala', '<p>El británico Chris Froome (Israel Start Up Nation), cuatro veces ganador del Tour de Francia, sufrió un el pasado verano un brote de bilharzia, infección parasitaria producida por un gusano que ya padeció hace 10 años.</p><p>\n        Froome, también ganador del Giro de Italia y doble vencedor de la Vuelta, se sintió especialmente cansado durante\n        todo el Tour de Francia 2021, por lo que se sometió a una serie de pruebas para ver las causas.\n        </p>\n        \n        <p>El equipo israelí confirmó a Velonews que Froome sufrió un nuevo episodio de la bilharzia, el mismo gusano parásito\n            con el que se infectó hace 10 años.\n        </p>\n        \n        <p>\'Chris Froome tuvo algunos problemas médicos esta temporada, y estuvo completamente bloqueado durante el Tour de\n            Francia, Para él fue el más difícil de todos los que ha hecho. Gastó enormes cantidades de energía, comentó Sylvan\n            Adams, propietario del Israel Start-Up Nation.\n        </p>\n        \n        <p>Froome admitió que fue diagnosticado y posteriormente tratado por el parásito, pero no quiso dar más detalles,\n            sugiriendo que no quería parecer que estaba \'poniendo excusas\' y dijo que fue tratado con éxito por los médicos del\n            equipo.\n        </p>\n        \n        <p>\'Voy a competir durante algunos años. Me encanta correr y estoy motivado para seguir trabajando y seguir compitiendo.\n            Tuve algunos problemas relacionados con mi recuperación, y creo que ya hemos resuelto la mayoría de ellos. Estoy\n            emocionado para afrontar la temporada 2022\', dijo.\n        </p>\n        \n        <p>La bilharzia, una enfermedad parasitaria también llamada esquistosomiasis, que afectó a Froome hace una década cuando\n            fichó por el Team Sky en 2010. La enfermedad, que afecta a más de 200 millones de personas en todo el mundo y causa\n            hasta 200.000 muertes por año, es frecuente en África, América del Sur y Asia.\n        </p>\n    \n        <p>Froome fue tratado por el brote de este verano y reanudó las carreras en la Vuelta a Alemania del mes de agosto.\n        </p>\n        \n        <p>\'Dio positivo en la prueba de bilharzia, tomó la medicación y tuvo un buen final de temporada. Inmediatamente comenzó\n            a mostrar una mejora en sus números, y somos optimistasrespecto a volver a ver al viejo Chris Froome. Él puede estar\n            allí y competir por las grandes giras\', concluyó el dirigente de la formación. </p>', 'noticia2.jpg', '2021-11-30 13:20:20'),
 (3, 2, 2, 'Morcillo hace historia en el aniversario más emotivo de la Vuelta Ibiza Scott', 'Guerrero - Sintsov y Burato - Peretti se hacen con la tercera etapa de la Vuelta a Ibiza', '<p>Fue hace veinte años cuando Bartolo Planells inició la aventura de la Vuelta a Ibiza Scott con el objetivo de enseñar\n        a sus amigos los encantos de la isla de Ibiza de una forma muy especial: rodando en bici, en mountain bike. Su\n        hermano, Juanjo Planells cogió el testigo para continuar con el legado que dejó Bartolo y, a día de hoy, por su\n        empeño y dedicación, el XX aniversario de la prueba ha resultado ser un éxito absoluto que ha cerrado estas dos\n        décadas con un ibicienco de Santa Eulalia como ganador de la cita: Enrique Morcillo. Junto a José Mari Sánchez ambos\n        han subido a lo más alto del podio de esta prueba cuya esencia es la practica del MTB por parejas.</p>\n    \n        <p>Las veinte ediciones vienen avaladas por el elenco de deportistas que participan en ella, por su forma de engranar a\n            los élite con los amateurs, por la fidelidad de sus participantes -que año tras año agotan las inscripciones en\n            menos de dos horas- y por el máximo compromiso de\n        \n            instituciones y patrocinadores que se han volcado para hacer realidad esta cita a pesar de las adversidades de la\n            pandemia.</p>\n        \n        <p>Pablo Guerrero y Anton Sintsov junto a Chiara Burato y Claudia Peretti se han hecho con la tercera etapa en un\n            recorrido que no ha hecho más que enamorar a los bikers tras el aumento de kilómetros que ha previsto la\n            organización para esta edición. El trazado para hoy se aventuraba exigente para los participantes, sobre todo tras\n            las dos jornadas anteriores, donde los ciclistas han completado un total de 203 kilómetros con un desnivel acumulado\n            de 5.200 metros en tres días. Un escenario paradisiaco para la práctica de este deporte.</p>\n        \n        <p>\'Llevábamos varios años pegándole al palo, entonces este año ganar la vuelta aquí, en casa, junto a José María\n            Sánchez que ha sido mi último compañero en los cuatro últimos años, es una alegría. Que se hayan endurecido más\n            etapas es de mi agrado, ya que cuanto más dura, más se selecciona el grupo de cabeza, y nosotros aprovechando el\n            pico de forma de la Cape, hemos venido a rematar\', ha declarado Enrique Morcillo.</p>\n        \n        <p>\'Esta tercera etapa ha sido muy bonita, los que conocíamos la carrera de otros años, hemos visto que tenía esencia de\n            la primera etapa y de la última de siempre, ha sido bastante rápida y completa pasando siempre por sitios muy\n            icónicos de la isla como Cala Comte o Cala Bassa y con un tiempo que finalmente ha acompañado. Desde mi punto de\n            vista ha sido un total acierto endurecer con unos kilómetros más la carrera. En cuanto a la competición en sí, hemos\n            intentado mantener la primera plaza controlada por los rivales más directos, no tener ningún problema ni físico ni\n            mecánico y hemos llegado muy cerca de ellos a la línea de meta para mantener el liderato\', explicaba el ganador de\n            la prueba, Jose Mari Sánchez sus sensaciones al entrar en meta. Aunque la emoción de la victoria se ha multiplicado\n            inmediatamente porque ha pedido matrimonio a su pareja con la medalla de finisher en la mano, y ella ha dicho: sí.\n        </p>\n        \n        <p>La pareja de las italianas ha demostrado su altísimo nivel donde a pesar de haber sufrido una caída en recorrido, se\n            han vuelto a proclamar ganadoras de la etapa vistiendo el maillot amarillo durante tres días de forma consecutiva.\n        \n        </p>\n        \n        <p>La edición 2022 ya tiene fecha: 15, 16 y 17 de abril. Pronto se anunciará la apertura de inscripciones, y esperamos\n            volver a vernos aquí, en Ibiza, la isla del MTB.\n        \n        </p>', 'noticia3.jpg', '2021-11-30 13:20:20'),
@@ -25,10 +52,15 @@ INSERT INTO `noticia` (`id`, `usuario_id`, `categoria_id`, `titular`, `entradill
 (7, 2, 4, 'Andalucía Bike Race', 'Participación de Mario y Álvaro en la prueba de 6 etapas Andaluza', '<p>Nuestros amigos Mario y Álvaro participaron en la gran prueba por etapas de nuestra tierra.</p>\n\n        <p>Donde Álvaro desgraciadamente sufrió una caída el penúltimo día en la etapa reina que no le permitió acaba esa etapa y por lo tanto la carrera completa. Pero seguro que volverá a ella para ser finisher.</p>\n        \n        <p>Etapas muy duras pero que no pararon de disfrutar en todo momento, Una experiencia maravillosa por lo que nos contaron. </p>', 'noticia7.jpg', '2021-11-30 13:20:20');
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Volcado de datos para la tabla usuario
 --
 
-INSERT INTO `usuario` (`id`, `nombre`, `email`, `nick`, `password`, `roles`) VALUES
+INSERT INTO usuario (id, nombre, email, nick, password, roles) VALUES
 (1, 'Juan José Guerra', 'japgrguez@gmail.com', 'jjguerra', '$2y$13$XqTPTX50SblaIx6UAiXMb.el/HuLB8elbOrWbrNMnkF7QY7cpjCZ2', '[\"ROLE_USER\"]'),
 (2, 'José Miguel González Lozada', 'josgonloz@gmail.com', 'z3myY', '$2y$13$BxVBkaaHzC4Qjan3Nn7i5uiwuSL1nFgU4S63eSBQ.u7rI1mfdkrue', '[\"ROLE_ADMIN\"]'),
 (3, 'josemi', 'wwwwwwww@gmail.com', 'josemgiuel', '$2y$13$R7oMwMHfo6MGctjx7Nr8QeUNBB1D.clqmCWj6DMJ/0IbGilAZ4g5K', '[\"ROLE_USER\"]');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
