@@ -86,7 +86,7 @@ class Usuario implements UserInterface
     private $comentarios;
 
     /**
-     * @ORM\OneToOne(targetEntity=LikesComentario::class, mappedBy="usuario", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=LikesComentario::class, mappedBy="usuario", cascade={"persist", "remove"})
      */
     private $likesComentario;
 

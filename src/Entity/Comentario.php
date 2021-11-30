@@ -39,6 +39,11 @@ class Comentario
      */
     private $fecha;
 
+    /**
+     * @ORM\OneToMany(targetEntity=LikesComentario::class, mappedBy="comentario", cascade={"persist", "remove"})
+     */
+    private $likesComentario;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,6 +93,24 @@ class Comentario
     public function setFecha(\DateTimeInterface $fecha): self
     {
         $this->fecha = $fecha;
+
+        return $this;
+    }
+
+
+    public function getLikesComentario(): ?LikesComentario
+    {
+        return $this->likesComentario;
+    }
+
+    public function setLikesComentario(LikesComentario $likesComentario): self
+    {
+        // set the owning side of the relation if necessary
+        if ($likesComentario->getComentario() !== $this) {
+            $likesComentario->setComentario($this);
+        }
+
+        $this->likesComentario = $likesComentario;
 
         return $this;
     }
