@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -165,12 +166,12 @@ class UsuarioController extends AbstractController
             $entityManager->remove($usuario);
             $entityManager->flush();
         }
-       
+
         //Invalida session antes de redirigir
         $session = $this->get('session');
         $session = new Session();
         $session->invalidate();
-        
+
         return $this->redirectToRoute('index', [], Response::HTTP_SEE_OTHER);
     }
 }
