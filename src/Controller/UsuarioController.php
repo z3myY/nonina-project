@@ -125,7 +125,27 @@ class UsuarioController extends AbstractController
             ->add('nombre', TextType::class)
             ->add('nick', TextType::class)
             ->add('email', TextType::class)
-            ->add('password', PasswordType::class)
+            ->add(
+                'password',
+                RepeatedType::class,
+                [
+                    'first_options' => ['label' => ' '],
+                    'second_options' => ['label' => ' '],
+                    'type' => PasswordType::class,
+                    'invalid_message' => 'Las contraseñas no coinciden',
+                    'constraints' => [
+                        new Length([
+                            'min' => 8,
+                            'minMessage' => 'Debes introducir una contraseña con al menos {{ limit }} carácteres',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 20,
+                        ]),
+                        new NotBlank([
+                            'message' => 'Escriba una contraseña'
+                        ]),
+                    ],
+                ]
+            )
             ->add(
                 'save',
                 SubmitType::class,
